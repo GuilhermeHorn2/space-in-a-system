@@ -1,0 +1,40 @@
+
+
+def mega(n):
+    r = round((n)/(1024**2),2)
+    return r
+def avrg(l):
+    r = round((sum(l)/len(l)),2)
+    r2 = str(r) + ' MB'
+    return r2
+
+nomes = []
+bytes  = []
+
+while True:
+    cy = input('nome bytes')
+    if cy == '0':
+        break
+    u = cy.split()
+    n = u[0]
+    b = int(u[1])
+    nomes.append(n)
+    bytes.append(mega(b))
+print('nomes:',nomes)
+print('bytes:',bytes)
+
+s = sum(bytes)
+prct = []
+for i in range(len(nomes)):
+    a = round((((bytes[i])*100)/s),2)
+    b = str(a)+'%'
+    prct.append(b)
+print('porcetagem:',prct)
+
+print('------------------------------------------------------------------------')
+for i in range(len(nomes)):
+    print('{}   {}   {}   {}'.format((i+1),nomes[i],bytes[i],prct[i]))
+print()
+print('Espaço total ocupado:',str(sum(bytes)) + ' MB')
+print('Espaço médio ocupado:',avrg(bytes))
+
